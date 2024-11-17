@@ -1,0 +1,158 @@
+{% extends "index.html" %}
+{% block title %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+     body {
+    font-family: Arial, sans-serif;
+    background-image: url(/static/images/i1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 130vh;
+    
+  }
+  
+  .containr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 150px;
+  }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="number"], .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"], .form-group input[type="date"], .form-group input[type="tel"], .form-group textarea, .form-group select {
+            width: 48%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .form-group.full-width input, .form-group.full-width textarea, .form-group.full-width select {
+            width: 100%;
+        }
+        .form-group.gender {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-group.gender label {
+            margin: 0;
+        }
+        .form-group.gender input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .form-group.profile input {
+            border: none;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4989b4;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #61a9da;
+        }
+    </style>
+</head>
+<body>
+
+<div class="containr">
+
+<div class="form-container">
+  {% if messages %}
+{% for message in messages %}
+<center><p class="alert alert-success">{{ message }}</p></center>
+
+{% endfor %}
+{% endif %}
+    <h2>Technician Register</h2>
+    <form action="{% url 'technicianregister' %}" method="POST" enctype="multipart/form-data">
+         {% csrf_token %}
+        <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <select id="gender" name="gender" required>
+                <option value="" disabled selected>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group full-width">
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="form-group">
+            <input type="tel" id="contact" name="contact" placeholder="Contact" required>
+            <textarea id="address" name="address" rows="3" placeholder="Address" required></textarea>
+        </div>
+        <div class="form-group">
+            <input type="number" id="Amount" name="amount" placeholder="Amount Per Day" min='1' required>
+            <select id="techrole" name="techrole" required>
+                <option value="" disabled selected>Select Technicians Role</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="House Cleaning">House Cleaning</option>
+                <option value="Pest Control">Pest Control</option>
+                <option value="Painting">Painting</option>
+                <option value="Home Appliances Repair">Home Appliances Repair</option>
+                <option value="AC Service And Repair">AC Service And Repair</option>
+                <option value="Refrigerator Repair">Refrigerator Repair</option>
+                <option value="Air Cooler Repair">Air Cooler Repair</option>
+                <option value="Water Purifier/RO Repair">Water Purifier/RO Repair</option>
+                <option value="Printer Repair">Printer Repair</option>
+                <option value="Washing Machine Repair">Washing Machine Repair</option>
+                <option value="Geyser Water Heater Repair">Geyser Water Heater Repair</option>
+                <option value="Lighting And Decoration">Lighting And Decoration</option>
+                <option value="Car And Bike Wash">Car And Bike Wash</option>
+                <option value="Electrician">Electrician</option>
+                <option value="Carpentry Services">Carpentry Services</option>
+                <option value="Gardening">Gardening</option>
+                <option value="Packers And Movers">Packers And Movers</option>
+            </select>
+            
+            
+        </div>
+        <div class="form-group full-width profile">
+            <label for="profile">Profile Picture</label>
+            <input type="file" id="profile" name="profile" accept="image/*" required>
+        </div>
+        <button type="submit">Register</button>
+        <p style="margin-top: 10px; text-align: center; color: black;">Already have an account? <a href="{% url 'technicianlogin' %}">Login</a></p>
+    </form>
+</div>
+</div>
+
+{% endblock %}
+

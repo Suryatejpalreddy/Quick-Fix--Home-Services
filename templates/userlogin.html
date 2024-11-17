@@ -1,0 +1,108 @@
+{% extends "index.html" %}
+{% block title %}
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url(/static/images/i1.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        
+        height: 120vh;
+      }
+      
+      .containr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 450px;
+        margin-top: 150px;
+      }
+  .form-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+  }
+  
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .form-group button {
+    background-color:  #4989b4;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+  }
+  
+  .form-group button:hover {
+    background-color: #61a9da;
+  }
+</style>
+</head>
+<body>
+    <div class="containr">
+<div class="form-container">
+    {% if messages %}
+    {% for message in messages %}
+    <center><p class="alert alert-success">{{ message }}</p></center>
+    
+    {% endfor %}
+    {% endif %}
+ <center> <h2>User Login</h2></center>
+  <form action="{% url 'userlogin' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <div class="form-group">
+      <button type="submit">Login</button>
+    </div>
+  </form>
+  <center><p style="color: black; align-items: center ;">Already have an account? <a href="{% url 'userregister' %}">Register</a></p></center>
+  <center><p style="color: black; align-items: center ;"> <a href="{% url 'forgotpassword' %}">Forgot Password</a></p></center>
+
+</div>
+</div>
+{% endblock title %}

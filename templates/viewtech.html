@@ -1,0 +1,147 @@
+{% extends "home.html" %}
+{% block title %}
+<title>User Activation </title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        /* margin: 0; */
+        /* padding: 0; */
+        background-image: url(/static/images/i1.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        /* height: 1000px; */
+    }
+
+    .containr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .table-container {
+        width: 80%;
+        margin-left: 80px;
+        margin-top: 140px;
+        overflow-x: auto;
+        /* Horizontal scroll */
+    }
+
+    table {
+        width: 100%;
+        /* Full width */
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+
+    td {
+        color: white;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .add-stock-button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+    }
+
+    .add-stock-button:hover {
+        background-color: #45a049;
+    }
+
+    h1 {
+        color: rgb(20, 20, 20);
+        margin-bottom: 40px;
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+    }
+</style>
+</head>
+
+<body>
+
+
+
+  
+    <center></center>
+    <div class="containr">
+        <div class="table-container" style="margin-top:100px; min-height: 90vh;">
+            <table>
+               
+                    <h1 >View Technicians</h1>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <center>
+                        <p class="alert alert-success">{{ message|safe }}</p>
+                    </center>
+                    {% endfor %}
+                    {% endif %}
+                    <center>
+                </center>
+                <thead>
+                    <tr>
+
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Contact</th> 
+                         <th> Address</th>
+                         <th>Tech Role</th>
+                         <th>status</th>
+                        <th>Actions</th>
+
+
+                    </tr>
+                </thead>
+                {% for i in data %}
+                <tbody>
+                    <tr>
+
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>{{ i.gender }}</td>
+                        <td>{{ i.contact }}</td> 
+                        <td>{{ i.address }}</td> 
+                        <td>{{ i.techrole }}</td>
+                        <td>{{ i.status }}</td>
+                       
+                        <td style="text-align: center;">
+                            <div style="display: flex; justify-content: center; gap: 15px;">
+                                {% if i.status == 'pending' or i.status == 'Un Authorized' %}
+                                <a href="{% url 'authorize' i.id %}"
+                                    style="display: inline-block; padding: 8px 46px; background-color: #227292; color: white; text-decoration: none; border-radius: 4px;">Authorize
+                            </a>
+                                {% elif i.status == 'Authorized' %}
+                                 <a href="{% url 'unauthorize' i.id %}"
+                                    style="display: inline-block; padding: 8px 46px; background-color: #227292; color: white; text-decoration: none; border-radius: 4px;">Un Authorized
+                                </a> 
+                                {% endif %}
+                            </div>
+                        </td>
+
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endblock %}

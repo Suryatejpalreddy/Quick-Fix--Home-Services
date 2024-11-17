@@ -1,0 +1,156 @@
+{% extends "home.html" %}
+{% block title %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .cont {
+            margin: 0;
+            padding: 120px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10%;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .status.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .status.pending {
+            background-color: #FF9800;
+            color: white;
+        }
+
+        .status.completed {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .status.canceled {
+            background-color: #F44336;
+            color: white;
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .filter-container form {
+            display: inline-block;
+        }
+
+        .filter-container select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .filter-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .filter-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <h2>Services History</h2>
+
+        <!-- Filter Dropdown -->
+        <div class="filter-container">
+            <form method="get" action="">
+                <select name="status_filter">
+                    <option value="">All Statuses</option>
+                    <option value="Accepted" {% if request.GET.status_filter == 'Accepted' %}selected{% endif %}>Accepted</option>
+                    <option value="Rejected" {% if request.GET.status_filter == 'Rejected' %}selected{% endif %}>Rejected</option>
+                    <option value="pending" {% if request.GET.status_filter == 'pending' %}selected{% endif %}>Pending</option>
+                    <option value="Completed" {% if request.GET.status_filter == 'Completed' %}selected{% endif %}>Completed</option>
+                </select>
+                <button type="submit">Filter</button>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ImageProfile</th>
+                    <th>ServiceName</th>
+                    <th>Technician</th>
+                    <th>Amount</th>
+                    <th>Requested By</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>  
+                    <td><img src="/{{i.profile}}" alt="Profile 1"></td>
+                    <td>{{i.techrole}}</td>
+                    <td>{{i.techemail}}</td>
+                    <td>{{i.amount}}</td>
+                    <td>{{i.username}}</td>
+                    {% if i.status == 'Accepted' %}
+                    <td><span class="status active">{{i.status}}</span></td>
+                    {% elif i.status == 'Rejected' %}
+                    <td><span class="status canceled">{{i.status}}</span></td>
+                    {% elif i.status == 'pending' %}
+                    <td><span class="status pending">{{i.status}}</span></td>
+                    {% elif i.status == 'Completed' %}
+                    <td><span class="status completed">{{i.status}}</span></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Home Services</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--
+
+TemplateMo 546 Sixteen Clothing
+
+https://templatemo.com/tm-546-sixteen-clothing
+
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/css/templatemo-sixteen.css">
+    <link rel="stylesheet" href="/static/css/owl.css">
+    {% comment %} <link rel="stylesheet" href="/static/css/c.css"> {% endcomment %}
+
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    {% comment %} <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>   {% endcomment %}
+    <!-- ***** Preloader End ***** -->
+
+    {% block content %}
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'index' %}"><h2>QUICK Fix<em> </em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'index' %}">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li> 
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'userlogin' %}">Users</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'technicianlogin' %}">Technicians</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'adminlogin' %}">Admin</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+    {% block title %}
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner header-text">
+      <div class="owl-banner owl-carousel">
+        <div class="banner-item-01">
+          <div class="text-content">
+            <h4>QUICK Fix Home Services</h4>
+            <h2>Get your best Technicians</h2>
+          </div>
+        </div>
+        <div class="banner-item-02">
+          <div class="text-content">
+            <h4>QUICK Fix Home Services</h4>
+            <h2>Get best Services</h2>
+          </div>
+        </div>
+        <div class="banner-item-03">
+          <div class="text-content">
+            <h4>QUICK Fix Home Services</h4>
+            <h2>Choose The Best Service</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>About</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="/static/images/feature-image.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>QUICK FIX-HOME SERVICES</h4>
+              <p>
+                Quick Fix-Home Services is a trusted provider of comprehensive home maintenance and repair solutions, catering to a wide array of needs including plumbing, electrical work, carpentry, and appliance repair. With a team of highly skilled and experienced professionals, they guarantee prompt, reliable service tailored to each client's specific requirements. Whether you're dealing with a minor repair or a major installation, Quick Fix is committed to delivering top-quality workmanship with a strong emphasis on customer satisfaction. Their services are not only efficient but also affordable, making it easier for homeowners to maintain their properties without unnecessary stress. Quick Fix-Home Services prioritizes your convenience, ensuring that your home remains in excellent condition all year round. From quick fixes to complex projects, they are dedicated to providing the best solutions, helping you enjoy a well-maintained and comfortable living space.</p>
+              {% comment %} <ul class="social-icons">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+              </ul> {% endcomment %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <footer style="background-color: #202020; height:200px; min-width:100%; padding: 20px 0; color: white; margin-left:0; padding-left: 0;" class="my-class">
+      <div class="" >
+        <div class="row">
+          <!-- Footer Column 1: About Us -->
+          <div class="col-md-4 mb-3" style="margin-bottom: 1rem;">
+            <h5 style="font-size: 1.25rem; margin-bottom: 15px;">About Us</h5>
+            <p style="margin-bottom: 10px; color: white; margin-left: 20px;">QuicK Fix Home Services is dedicated to connecting you with skilled technicians for all your home needs. Our platform ensures quality service and efficient solutions, making home maintenance hassle-free.</p>
+          </div>
+          
+          <!-- Footer Column 2: Contact Info -->
+          <div class="col-md-4 mb-3" style="margin-bottom: 1rem;">
+          <h5 style="font-size: 1.25rem; margin-bottom: 15px;">Contact Us</h5>
+          <ul style="padding-left: 0; list-style: none; margin-left:20px;">
+            <li style="margin-bottom: 10px; color: white;"><i class="bi bi-envelope" style="margin-right: 5px;"></i> support@quickfix.com</li>
+            <li style="margin-bottom: 10px; color: white;"><i class="bi bi-phone" style="margin-right: 5px;"></i> +91 9030333433</li>
+            <li style="margin-bottom: 10px; color: white;"><i class="bi bi-geo-alt" style="margin-right: 5px;"></i> 1-5-558, 2nd lane, Balaji Colony, Tirupati 517502.</li>
+          </ul>
+          </div>
+          
+          <!-- Footer Column 3: Follow Us -->
+          <div class="col-md-4 mb-1" >
+            <h5 style="font-size: 1.25rem; margin-bottom: 15px;">Follow Us</h5>
+            <div style="display: d-flex; gap: 15px; ">
+              <a href="https://facebook.com/quickfix" class="text-decoration-none" style="color: #ffffff; font-size: 1.5rem; transition: color 0.3s;"><i class="bi bi-facebook"></i></a>
+              <a href="https://twitter.com/quickfix" class="text-decoration-none" style="color: #ffffff; font-size: 1.5rem; transition: color 0.3s;"><i class="bi bi-twitter"></i></a>
+              <a href="https://instagram.com/quickfix" class="text-decoration-none" style="color: #ffffff; font-size: 1.5rem; transition: color 0.3s;"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com/company/quickfix" class="text-decoration-none" style="color: #ffffff; font-size: 1.5rem; transition: color 0.3s;"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <!-- <div style="background-color: #e9ecef; padding: 10px 0; text-align: center;">
+          <p style="margin-bottom: 0;">Copyright &copy; 2024 QUICK Fix Home Services. All rights reserved.</p>
+        </div> -->
+      </div>
+    </footer>
+    
+      <!-- Bootstrap JS (optional, for additional functionality) -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
+    {% endblock  %}
+    {% endblock  %}
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/jquery/jquery.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="/static/js/custom.js"></script>
+    <script src="/static/js/owl.js"></script>
+    <script src="/static/js/slick.js"></script>
+    <script src="/static/js/isotope.js"></script>
+    <script src="/static/js/accordions.js"></script>
+
+
+    <script language = "text/Javascript"> 
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+    </script>
+    
+
+
+  </body>
+
+</html>

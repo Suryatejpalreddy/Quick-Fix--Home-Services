@@ -1,0 +1,134 @@
+{% extends "home.html" %}
+{% block title %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            
+            
+        }
+        .cont
+        {
+            margin: 0;
+            padding: 120px;
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            /* border: 1px solid #dddddd; */
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10%;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .status.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .status.pending {
+            background-color: #FF9800;
+            color: white;
+        }
+
+        .status.completed {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .status.canceled {
+            background-color: #F44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        {% if messages %}
+        {% for message in messages %}
+        <center>
+            <p class="alert alert-success">{{ message|safe }}</p>
+        </center>
+        {% endfor %}
+        {% endif %}
+    <h2>Service Requests</h2>
+
+    <table>
+        <thead style="text-align: center;">
+            <tr>
+                <th>ImageProfile</th>
+                <th>ServiceName</th>
+                <th>Technician</th>
+                <th>Amount </th>
+                <!-- <th>Requested By</th> -->
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>  
+                <td><img src="/{{i.profile}}" alt="Profile 1"></td>
+                <td>{{i.techrole}}</td>
+                <td>{{i.techemail}}</td>
+                <td>{{i.amount}}</td>
+                <!-- <td>{{i.username}} -->
+                 {% if i.status == 'Accepted' %}
+                <td><span class="status active">{{i.status}}</span></td>
+                {% elif i.status == 'Rejected' %}
+                <td><span class="status canceled">{{i.status}}</span></td>
+                {% elif i.status == 'pending' %}
+                <td><span class="status pending">{{i.status}}</span></td>
+                {% elif i.status == 'Completed' %}
+                <td><span class="status completed">{{i.status}}</span>
+                    {% if i.feedback != 'None' %}
+                    <span class="status completed">Feedback Sent</span>
+                    {% else %}
+                    <a href="{% url 'feedback' i.id %}"><span class="status active">Feedback</span></a></td>
+                    {% endif %}
+                </td>
+
+               {% endif %}
+           
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    {% endblock %}

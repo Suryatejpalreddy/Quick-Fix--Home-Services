@@ -1,0 +1,86 @@
+{% extends "home.html" %}
+{% block title %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            
+        }
+        .cont
+        {
+            padding: 120px;
+        }
+        .feedback-form {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .feedback-form h2 {
+            margin-bottom: 20px;
+        }
+        .feedback-form .form-group {
+            margin-bottom: 15px;
+        }
+        .feedback-form .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .feedback-form .form-group input, 
+        .feedback-form .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .feedback-form .form-group textarea {
+            resize: vertical;
+            height: 200px;
+        }
+        .feedback-form .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .feedback-form .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="feedback-form">
+            <h2>Submit Your Feedback</h2>
+            <form action="{% url 'feedback' id %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value='{{ name }}' readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Feedback:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Submit Feedback</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

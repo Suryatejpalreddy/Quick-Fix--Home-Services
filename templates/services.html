@@ -1,0 +1,135 @@
+{% extends "home.html" %}
+{% block title %}
+<!-- Page Content -->
+<div class="page-heading products-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-content">
+            <h4>Home Services</h4>
+            <h2>Available Services</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="products">
+    <center>
+        <h2 style="position: relative; display: inline-block; color: #000000; font-size: 36px; font-weight: bold; margin-bottom: 30px; letter-spacing: 2px;">
+            SERVICES
+            <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50%; height: 4px; background-color: #000000; border-radius: 2px;"></span>
+        </h2>
+    </center>
+    <BR></BR>
+    <form action="{% url 'search' %}" method="post" style="display: flex; justify-content: flex-end; align-items: center; background-color: #da2a13; padding: 50px; border-radius: 8px;">
+      {% csrf_token %}
+        <div style="margin-right: 10px;">
+            <input type="text" id="locationSearch" name="location" placeholder="Enter Location" 
+                   style="width: 200px; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 5px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        </div>
+        <div style="margin-right: 10px;">
+            <input type="text" id="serviceSearch" name="service" placeholder="Search for Service" 
+                   style="width: 200px; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 5px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        </div>
+        <div>
+            <button type="submit" 
+                    style="padding: 10px 20px; font-size: 16px; border: none; border-radius: 5px; background-color: #ff0000; color: #ffffff; cursor: pointer;">
+                Search
+            </button>
+        </div>
+    </form>
+    <br>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="filters">
+              <!-- <ul>
+                  <li class="active" data-filter="*">All Products</li>
+                  <li data-filter=".des">Featured</li>
+                  <li data-filter=".dev">Flash Deals</li>
+                  <li data-filter=".gra">Last Minute</li>
+                  <li data-filter=".des">Featured</li>
+                  <li data-filter=".dev">Flash Deals</li>
+                  <li data-filter=".gra">Last Minute</li>
+                  <li data-filter=".des">Featured</li>
+                  <li data-filter=".dev">Flash Deals</li>
+                  <li data-filter=".gra">Last Minute</li>
+                  
+              </ul> -->
+          </div>
+        </div>
+
+
+
+        <div class="col-md-12">
+          <div class="filters-content">
+              <div class="row" style="display: flex;">
+                {% if data %}
+                  {% for i in data %}
+                  <div class="col-lg-4 col-md-4 all des">
+                      <div class="product-item">
+                          <a href="{% url 'viewservice' i.id %}">
+                              <img src="/{{i.profile}}" alt="" style="width: 100%; height: 200px; object-fit: cover;">
+                          </a>
+                          <div class="down-content">
+                              <a href="{% url 'viewservice' i.id %}"><h4>{{i.techrole}}</h4></a>
+                              <h6>Rs : {{i.amount}}</h6>
+                              
+                              <div style="margin-top: 10px;">
+                                  <div style="display: flex; margin-bottom: 5px;">
+                                      <h7 style="min-width: 80px;">Name</h7>
+                                     <h7>:{{i.name}}</h7>
+                                  </div>
+                                  <div style="display: flex; margin-bottom: 5px;">
+                                      <h7 style="min-width: 80px;">Contact</h7>
+                                     <h7>:{{i.contact}}</h7>
+                                  </div>
+                                  <div style="display: flex; margin-bottom: 5px;">
+                                      <h7 style="min-width: 80px;">Address</h7>
+                                     <h7>:{{i.address}}</h7>
+                                  </div>
+                              </div>
+                            
+                              <div style="margin-top: 30px;">
+                                {% if login == 'user' %}
+                                <a href="{% url 'bookservice' i.id %}" style="text-decoration: none;">
+                                  <button style="
+                                    background-color: #00FFFF;
+                                    color: #000000; 
+                                    border: none; 
+                                    padding: 10px 20px;
+                                    font-size: 16px; 
+                                    cursor: pointer; 
+                                    border-radius: 5px; 
+                                    transition: background-color 0.3s ease; 
+                                  " onmouseover="this.style.backgroundColor='#00CED1'" onmouseout="this.style.backgroundColor='#00FFFF'">
+                                    Book Service
+                                  </button>
+                                </a> 
+                                {% endif %}
+                                 <a href="{% url 'viewservice' i.id %}"> <h7><span>Reviews</span></h7></a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+                  {% else %}
+                  <center><h6 style="margin-left: 500px; color: black;"> No Data Found</h6></center>
+          
+            {% endif %}
+        
+              
+        
+        
+                  
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  {% endblock %}

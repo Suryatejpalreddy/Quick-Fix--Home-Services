@@ -1,0 +1,107 @@
+{% extends "home.html" %}
+{% block title %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e4f0bb;
+            margin: 0;
+            padding: 0;
+        }
+        .content-wrapper {
+            padding-top: 150px; /* Space between navbar and content */
+            display: flex;
+            justify-content: center;
+        }
+        .profile-container {
+            max-width: 1000px;
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            transition: transform 0.3s ease-in-out;
+            height: 400px;
+            width: 700px;
+        }
+        .profile-container:hover {
+            transform: scale(1.03); /* Subtle zoom effect on hover */
+        }
+        .profile-pic {
+            flex: 1;
+            max-width: 300px;
+            margin-right: 30px;
+        }
+        .profile-pic img {
+            width: 100%;
+            height: auto;
+            border-radius: 10%;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .profile-info {
+            flex: 2;
+            color: white;
+        }
+        .profile-info h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .profile-info p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #f1f1f1;
+        }
+        .profile-footer {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+  
+<div class="content-wrapper">
+   
+    <div class="profile-container">
+       
+        <div class="profile-pic">
+            {% for i in data %}
+            <img src="/{{i.profile}}" alt="Profile Picture" style="height: 300px; width: 300px;">
+        </div>
+        <div class="profile-info">
+            <h2>{{i.name}}</h2>
+            <p>Email: {{i.email}}</p>
+            <p>Location: {{i.address}}</p>
+            <p>Contact: {{i.contact}}</p>
+            <p>Profession: {{i.techrole}}</p>
+            <div class="profile-footer">
+                <a href="{% url 'updateprofile' %}" style="text-decoration: none;">
+                    <button style="
+                      background-color: #00FFFF;
+                      color: #000000; 
+                      border: none; 
+                      padding: 10px 20px;
+                      font-size: 16px; 
+                      cursor: pointer; 
+                      border-radius: 5px; 
+                      transition: background-color 0.3s ease; 
+                    " onmouseover="this.style.backgroundColor='#00CED1'" onmouseout="this.style.backgroundColor='#00FFFF'">
+                      Update Profile
+                    </button>
+                  </a>
+                  
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

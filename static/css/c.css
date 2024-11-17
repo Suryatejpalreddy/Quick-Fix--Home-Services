@@ -1,0 +1,54 @@
+.testimonial-section {
+    background-color: #f4f4f4;
+    padding: 50px 0;
+}
+
+.testimonial-slider {
+    margin-top: 30px;
+}
+
+.testimonial-item {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-item p {
+    font-size: 18px;
+    color: #333;
+}
+
+.testimonial-item p:nth-child(2) {
+    font-weight: bold;
+    color: #555;
+}
+
+.slick-dots {
+    bottom: 10px;
+    text-align: center;
+}
+
+.slick-dots li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 10px;
+    height: 10px;
+    padding: 5px;
+    cursor: pointer;
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    background: #ccc;
+}
+
+.slick-dots li.slick-active button {
+    background: #333;
+}

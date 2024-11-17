@@ -1,0 +1,53 @@
+{% extends "home.html" %}
+{% block title %}
+<main style="padding: 140px 20px; max-width: 1200px; margin: 0 auto;">
+  {% if messages %}
+    {% for message in messages %}
+    <center><p class="alert alert-success">{{ message }}</p></center>
+    
+    {% endfor %}
+    {% endif %}
+  <div style="display: flex; ">
+
+      <!-- Left Side: Office Details -->
+      <div style="flex: 1; background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); min-width: 300px;">
+          <h2 style="font-size: 2rem; margin-bottom: 20px; color: #333;">Our Office</h2>
+          <p style="margin-bottom: 10px;"><strong>Address:</strong> 123 Main Street, Suite 100, Anytown, USA</p>
+          <p style="margin-bottom: 10px;"><strong>Phone:</strong> +1 (800) 123-4567</p>
+          <p style="margin-bottom: 10px;"><strong>Email:</strong> support@quickfix.com</p>
+          <p style="margin-bottom: 10px;"><strong>Working Hours:</strong> Mon - Fri: 9 AM - 6 PM</p>
+          <h3 style="font-size: 1.75rem; margin-bottom: 15px; color: #333;">Our Location</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345096824!2d144.95565151568006!3d-37.81720974202106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577f5e3a8b7036d!2s123%20Main%20St%2C%20Melbourne%20VIC%203001%2C%20Australia!5e0!3m2!1sen!2sus!4v1602739919827!5m2!1sen!2sus" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      </div>
+
+      <!-- Right Side: Contact Form -->
+      <div style="flex: 1; background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); min-width: 300px;">
+          <h2 style="font-size: 2rem; margin-bottom: 20px; color: #333;">Contact Us</h2>
+          <form action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+              <div style="margin-bottom: 20px;">
+                  <label for="name" style="display: block; margin-bottom: 5px; font-weight: bold;">Name</label>
+                  <input type="text" id="name" name="name" style="width: 100%; padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc;" required>
+              </div>
+              <div style="margin-bottom: 20px;">
+                  <label for="email" style="display: block; margin-bottom: 5px; font-weight: bold;">Email</label>
+                  <input type="email" id="email" name="email" style="width: 100%; padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc;" required>
+              </div>
+              <div style="margin-bottom: 20px;">
+                <label for="subject" style="display: block; margin-bottom: 5px; font-weight: bold;">Contact</label>
+                <input type="number" id="subject" name="phone" style="width: 100%; padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc;" required>
+            </div>
+              <div style="margin-bottom: 20px;">
+                  <label for="message" style="display: block; margin-bottom: 5px; font-weight: bold;">Message</label>
+                  <textarea id="message" name="message" rows="5" style="width: 100%; padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc;" required></textarea>
+              </div>
+              <button type="submit" style="background-color: #28a745; color: white; padding: 10px 20px; font-size: 1.25rem; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+                  Send Message
+              </button>
+          </form>
+      </div>
+
+  </div>
+
+</main>
+{% endblock %}
